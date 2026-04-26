@@ -1,0 +1,31 @@
+### Step-Based Interaction System (With UI Dots)
+
+This system implements a step-by-step interaction flow in Unity, combining object interaction, spatial detection, visual highlighting, and UI feedback.
+
+The `StepSequenceManager` is the central controller. It manages an ordered list of steps (`TrainingStep`) and tracks the current step. Each step contains an instruction, a type of interaction, and references to relevant objects and/or zones. The manager displays the current instruction and continuously checks whether the step has been completed. When completed, it advances to the next step.
+
+Two main interaction types are supported:
+
+* **GrabObject**: Completed when the target object is grabbed.
+* **PlaceObjectInZone**: Completed when the object is placed inside a defined zone and released.
+
+The `GrabbableTracker` script monitors whether an object is currently being held, typically through XR interaction components.
+
+The `PlaceZone` script detects whether an object is inside a specific area using trigger colliders. It keeps track of objects entering and exiting the zone and provides a `Contains()` check for validation.
+
+The `StepHighlighter` script provides visual guidance by highlighting the relevant object or zone for the active step. It modifies the material color of renderers and can optionally apply a pulsing effect to draw attention.
+
+The `StepDotsUI` script provides a UI-based progress indicator. It dynamically creates a dot for each step and updates their states:
+
+* Normal (upcoming steps)
+* Active (current step, using a highlight child object)
+* Completed (finished steps)
+
+Together, these components create a modular system where:
+
+* The manager controls logic and progression
+* Interaction scripts detect user actions
+* Highlighting guides attention in the scene
+* UI dots visualize progress
+
+This results in a clear, structured, and user-friendly interaction workflow suitable for training or VR applications.

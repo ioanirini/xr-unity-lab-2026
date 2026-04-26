@@ -1,0 +1,26 @@
+### Step-Based Interaction System (Without UI Indicators)
+
+This system implements a step-by-step interaction flow in Unity using a `StepSequenceManager`. The goal is to guide the user through a sequence of actions, such as grabbing and placing objects, without relying on additional UI indicators like progress dots.
+
+The `StepSequenceManager` controls the progression of steps. Each step is defined using a `TrainingStep`, which includes an instruction, a step type, and references to relevant objects and zones. At runtime, the manager displays the current instruction using a TextMeshPro UI element and continuously checks whether the step conditions have been fulfilled.
+
+Two main types of interactions are supported:
+
+* **Grab Object**: The step is completed when the specified object is picked up.
+* **Place Object in Zone**: The step is completed when the object is placed within a defined zone and released.
+
+The `PlaceZone` script handles spatial detection using trigger colliders. It tracks whether a target object is inside the zone and provides this information to the sequence manager.
+
+The `GrabbableTracker` script monitors whether an object is currently being held, typically through XR interaction components.
+
+To enhance user guidance without UI clutter, a highlighting system is used. The `StepHighlighter` script visually emphasizes the relevant object or zone for the current step. This is achieved by modifying the material properties of the object, optionally using a pulsing effect to draw attention.
+
+By removing the UI dot indicators, the system relies more on in-world feedback and instruction text, creating a cleaner and more immersive experience, especially in VR environments.
+
+Overall, the architecture separates responsibilities clearly:
+
+* The sequence manager controls logic and progression.
+* The zone and tracker scripts handle interaction detection.
+* The highlighter provides visual feedback.
+
+This modular approach allows the system to be easily extended or adapted for different training or interaction scenarios.

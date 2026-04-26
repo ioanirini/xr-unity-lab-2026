@@ -1,0 +1,18 @@
+The system is built around a simple step-based training flow controlled by the `StepSequenceManager`. This script manages a sequence of actions that the user must complete in order.
+
+At the core, the system uses an array of `TrainingStep` objects. Each step contains an instruction, a step type (such as grabbing or placing an object), and references to the relevant object and/or target zone.
+
+When the scene starts, the `StepSequenceManager` displays the instruction for the first step using a TextMeshPro UI element. Every frame, it checks whether the current step has been completed by calling `IsCurrentStepComplete()`.
+
+Each step type has its own completion condition:
+
+* For a **GrabObject** step, the system checks if the target object is currently being held (`IsGrabbed`).
+* For a **PlaceObjectInZone** step, it checks that the object is inside the correct zone and has been released.
+
+If a step is completed, the manager advances to the next step and updates the instruction text. Once all steps are finished, the system displays “Completed!”.
+
+The `PlaceZone` script is responsible for detecting whether an object is inside a defined area. It uses trigger colliders (`OnTriggerEnter` and `OnTriggerExit`) to track objects within the zone and provides a `Contains()` method for the manager to query.
+
+The `GrabbableTracker` script tracks whether an object is currently grabbed, typically by integrating with XR interaction components.
+
+Together, these scripts form a simple state-driven training sequence where user actions are validated step-by-step.
