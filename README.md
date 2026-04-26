@@ -134,14 +134,6 @@ Each workshop is **independent** and can be opened separately in Unity.
 
 ---
 
-## 📅 XR Equipment & Support
-
-You can book XR equipment and guidance sessions here:
-
-👉 https://docs.google.com/spreadsheets/d/1cCURn6u4ME2LCyZxaYYBpkh-X2ywFKCy4Wij7HZX2HA/edit?usp=sharing
-
----
-
 ## 📌 Notes
 
 * Workshops are uploaded progressively
@@ -154,9 +146,3 @@ You can book XR equipment and guidance sessions here:
 
 * **eBusiness & UX Lab — University of Peloponnese**
 * **Vongrid**
-
----
-
-## ⭐ Support
-
-If you find this repository useful, consider giving it a ⭐
